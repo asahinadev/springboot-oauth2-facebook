@@ -1,0 +1,22 @@
+server:
+  port: 9002
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          facebook:
+            provider:      "facebook"
+            client-name:   "Facebook"
+            client-id:     "[env]"
+            client-secret: "[env]"
+            redirect-uri:  "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope:
+              - email
+              - public_profile
+        provider: 
+          facebook:
+            authorization-uri: "https://www.facebook.com/dialog/oauth"
+            token-uri:         "https://graph.facebook.com/oauth/access_token"
+            user-info-uri:     "https://graph.facebook.com/me?fields=id,name,email"
